@@ -1,0 +1,27 @@
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - name: Script Task
+    command: |
+      python3 -m http.server 3000
+
+
+  - name: Say hello
+    init: cowsay "hello lou"
+  
+  - name: Interactive onboarding
+    command: |
+      read -p ">> Enter your GitHub email: " -r email
+
+      gp env GITHUB_EMAIL="${email}"
+
+      echo "An env var called GITHUB_EMAIL was added to https://gitpod.io/variables"
+    
+
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: Frontend
+    description: Port 3000 for the frontend
+    port: 3000
+    onOpen: open-browser
